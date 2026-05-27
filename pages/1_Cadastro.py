@@ -3,6 +3,8 @@ import sqlite3
 import os
 import sys
 
+st.sidebar.image("assets/logo.png", use_container_width=True)
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from utils.auth import hash_password
 

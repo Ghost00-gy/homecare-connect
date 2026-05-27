@@ -4,6 +4,8 @@ import pandas as pd
 import os
 from datetime import datetime
 
+st.sidebar.image("assets/logo.png", use_container_width=True)
+
 st.set_page_config(page_title="Meus Atendimentos", page_icon="📋", layout="wide")
 
 # Força o fundo branco para manter a identidade visual limpa

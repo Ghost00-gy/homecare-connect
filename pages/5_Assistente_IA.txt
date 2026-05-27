@@ -6,6 +6,8 @@ import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from utils.ai_mock import sugerir_especialidade
 
+st.sidebar.image("assets/logo.png", use_container_width=True)
+
 st.set_page_config(page_title="Assistente IA - HomeCare", page_icon="🤖", layout="centered")
 
 # Fundo branco para manter a consistência visual da marca

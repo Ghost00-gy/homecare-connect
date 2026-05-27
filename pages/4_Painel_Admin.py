@@ -3,6 +3,8 @@ import sqlite3
 import pandas as pd
 import os
 
+st.sidebar.image("assets/logo.png", use_container_width=True)
+
 st.set_page_config(page_title="Painel Admin - HomeCare", page_icon="⚙️", layout="wide")
 
 st.markdown("<style>.stApp { background-color: #ffffff; }</style>", unsafe_allow_html=True)

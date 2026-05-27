@@ -16,6 +16,8 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+st.image("assets/logo.png", width=250)
+
 st.title("🩺 HomeCare Connect")
 st.markdown("### Cuidado humanizado e profissional no conforto do seu lar.")
 
