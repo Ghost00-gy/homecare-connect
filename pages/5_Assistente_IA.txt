@@ -1,0 +1,41 @@
+import streamlit as st
+import os
+import sys
+
+# Garante que a página encontre a pasta utils
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from utils.ai_mock import sugerir_especialidade
+
+st.set_page_config(page_title="Assistente IA - HomeCare", page_icon="🤖", layout="centered")
+
+# Fundo branco para manter a consistência visual da marca
+st.markdown("<style>.stApp { background-color: #ffffff; }</style>", unsafe_allow_html=True)
+
+st.title("🤖 Assistente de Triagem")
+
+if 'logged_in' not in st.session_state or not st.session_state['logged_in']:
+    st.warning("Você precisa fazer login para usar o Assistente Virtual.")
+elif st.session_state.get('user_role') != 'paciente':
+    st.info("O assistente de triagem é de uso exclusivo para pacientes e familiares.")
+else:
+    st.markdown("### Descubra qual é o profissional ideal para a sua necessidade.")
+    st.write("Descreva o que está acontecendo e nosso sistema recomendará a especialidade correta para o cuidado domiciliar.")
+    
+    relato = st.text_area(
+        "Como podemos ajudar hoje?", 
+        placeholder="Ex: Minha avó fez uma cirurgia no fêmur e precisa de ajuda para voltar a andar e fazer exercícios em casa."
+    )
+    
+    if st.button("Analisar Necessidade"):
+        if relato.strip() == "":
+            st.error("Por favor, descreva a situação acima.")
+        else:
+            com_spinner = st.spinner("Analisando sintomas e necessidades...")
+            with com_spinner:
+                sugestao = sugerir_especialidade(relato)
+                
+            st.success(f"**Recomendação do Sistema:** {sugestao}")
+            
+            st.markdown("---")
+            st.markdown(f"Quer buscar profissionais desta área agora mesmo?")
+            st.info("👉 Acesse a página **2 Buscar Profissionais** no menu lateral e filtre por essa especialidade.")
